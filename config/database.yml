@@ -1,0 +1,24 @@
+# MySQL. Versions 5.1.10 and up are supported.
+#
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: To4st3r
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: henslowe5_development
+
+test:
+  <<: *default
+  database: henslowe5_test
+
+production:
+  <<: *default
+  database: henslowe5_production
+  username: henslowe5
+  password: <%= ENV['HENSLOWE5_DATABASE_PASSWORD'] %>
